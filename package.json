@@ -1,0 +1,19 @@
+{
+  "name": "hero-battle",
+  "private": true,
+  "workspaces": [
+    "game",
+    "admin"
+  ],
+  "scripts": {
+    "dev:game": "cd game && npm run dev",
+    "dev:admin": "cd admin && npm run dev",
+    "build:game": "cd game && npm run build",
+    "build:admin": "cd admin && npm run build",
+    "dev:all": "concurrently \"npm run dev:game\" \"npm run dev:admin\"",
+    "install:all": "npm install && cd game && npm install && cd ../admin && npm install"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
