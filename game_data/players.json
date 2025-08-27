@@ -1,0 +1,22 @@
+[
+  {
+    "UID": "player_001",
+    "Name": "TestPlayer1",
+    "Experience": {
+      "Level": 1,
+      "Rank": 1,
+      "Level XP": 0,
+      "Total XP": 0
+    }
+  },
+  {
+    "UID": "player_002", 
+    "Name": "TestPlayer2",
+    "Experience": {
+      "Level": 3,
+      "Rank": 1,
+      "Level XP": 45,
+      "Total XP": 145
+    }
+  }
+]
