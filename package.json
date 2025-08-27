@@ -11,7 +11,12 @@
     "build:game": "cd game && npm run build",
     "build:admin": "cd admin && npm run build",
     "dev:all": "concurrently \"npm run dev:game\" \"npm run dev:admin\"",
-    "install:all": "npm install && cd game && npm install && cd ../admin && npm install"
+    "install:all": "npm install && cd game && npm install && cd ../admin && npm install",
+    "format:game": "cd game && prettier --write \"src/**/*.{js,jsx,ts,tsx,json,css,md}\"",
+    "format:admin": "cd admin && prettier --write \"src/**/*.{js,jsx,ts,tsx,json,css,md}\"",
+    "format:all": "npm run format:game && npm run format:admin",
+    "lint:game": "cd game && npm run lint",
+    "lint:admin": "cd admin && npm run lint"
   },
   "devDependencies": {
     "concurrently": "^8.2.2"
