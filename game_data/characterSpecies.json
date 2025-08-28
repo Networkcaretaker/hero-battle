@@ -1,0 +1,18 @@
+[
+	{
+		"speciesName": "Human",
+		"Intelligence": 2
+	},
+  	{
+		"speciesName": "Dwarf",
+		"Strength": 2
+	},
+  	{
+		"speciesName": "Elf",
+		"Magic": 2
+	},
+  	{
+		"speciesName": "Orc",
+		"Agility": 2
+	}
+]
