@@ -32,3 +32,11 @@ logs
 # Firebase
 .firebase/
 firebase-debug.log
+
+# Game Data files
+characterSpecies.json
+heroClass.json
+heroRole.json
+heroes.json
+heroRace.json
+players.json

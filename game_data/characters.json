@@ -1,0 +1,42 @@
+[
+  {
+    "character_name": "Balroc",
+    "character_description": "A brutal orc warrior",
+    "character_race": "Orc",
+    "character_class": "Brawler", 
+    "character_role": "Tank",
+    "character_level": 1,
+    "character_rank": 1,
+    "strength": 4,
+    "intelligence": 1,
+    "agility": 2,
+    "magic": 1,
+	"health": 100,
+    "stamina": 20,
+    "mana": 10,
+    "physical_attack": 8,
+    "magic_attack": 3,
+    "physical_defence": 4,
+    "magic_defence": 2
+  },
+  {
+    "character_name": "Tristan",
+    "character_description": "A young mage warrior",
+    "character_race": "Human",
+    "character_class": "Mage",
+    "character_role": "Warrior",
+    "character_level": 1,
+    "character_rank": 1,
+    "strength": 3,
+    "intelligence": 1,
+    "agility": 2,
+    "magic": 2,
+    "health": 100,
+    "stamina": 20,
+    "mana": 10,
+    "physical_attack": 6,
+    "magic_attack": 5,
+    "physical_defence": 3,
+    "magic_defence": 3
+  }
+]
