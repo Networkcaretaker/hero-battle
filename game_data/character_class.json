@@ -8,21 +8,9 @@
       "intelligence": 2,
       "agility": 0,
       "magic": 3,
-      "skills": [
-        "elemental_magic",
-        "spell_focus",
-        "mana_efficiency"
-      ],
-      "traits": [
-        "arcane_knowledge",
-        "spell_power",
-        "fragile_body"
-      ],
-      "abilities": [
-        "fireball",
-        "lightning_storm",
-        "mana_shield"
-      ]
+      "skills": [],
+      "traits": [],
+      "abilities": []
     },
     {
       "class_id": "Brawler",
@@ -32,21 +20,9 @@
       "intelligence": 1,
       "agility": 2,
       "magic": 0,
-      "skills": [
-        "unarmed_combat",
-        "intimidation",
-        "pain_tolerance"
-      ],
-      "traits": [
-        "iron_fists",
-        "berserker_rage",
-        "thick_skin"
-      ],
-      "abilities": [
-        "power_strike",
-        "ground_slam",
-        "intimidating_shout"
-      ]
+      "skills": [],
+      "traits": [],
+      "abilities": []
     },
     {
       "class_id": "Rouge",
@@ -56,22 +32,9 @@
       "intelligence": 1,
       "agility": 3,
       "magic": 1,
-      "skills": [
-        "stealth",
-        "lockpicking",
-        "backstab",
-        "acrobatics"
-      ],
-      "traits": [
-        "shadow_step",
-        "critical_strike",
-        "evasion"
-      ],
-      "abilities": [
-        "sneak_attack",
-        "smoke_bomb",
-        "poison_blade"
-      ]
+      "skills": [],
+      "traits": [],
+      "abilities": []
     },
     {
       "class_id": "Healer",
@@ -81,23 +44,9 @@
       "intelligence": 3,
       "agility": 1,
       "magic": 1,
-      "skills": [
-        "divine_magic",
-        "herbalism",
-        "first_aid",
-        "purification"
-      ],
-      "traits": [
-        "healing_touch",
-        "divine_favor",
-        "pacifist"
-      ],
-      "abilities": [
-        "heal",
-        "group_heal",
-        "purify",
-        "blessing"
-      ]
+      "skills": [],
+      "traits": [],
+      "abilities": []
     },
     {
       "class_id": "Commander",
@@ -107,23 +56,9 @@
       "intelligence": 3,
       "agility": 1,
       "magic": 0,
-      "skills": [
-        "leadership",
-        "tactical_planning",
-        "rally",
-        "formation_fighting"
-      ],
-      "traits": [
-        "inspiring_presence",
-        "tactical_mind",
-        "battlefield_awareness"
-      ],
-      "abilities": [
-        "battle_orders",
-        "inspire_courage",
-        "tactical_strike",
-        "rally_troops"
-      ]
+      "skills": [],
+      "traits": [],
+      "abilities": []
     }
   ]
 }

@@ -1,0 +1,124 @@
+{
+  "status_effects": [
+    {
+      "status_effect_id": "lucky",
+      "status_name": "LUCKY",
+      "status_description": "Increases chance of dealing higher damage through improved damage roll probability.",
+      "status_type": "Buff"
+    },
+    {
+      "status_effect_id": "critical_hit",
+      "status_name": "CRITICAL HIT",
+      "status_description": "Enhanced critical hit chance with escalating damage multipliers.",
+      "status_type": "Buff"
+    },
+    {
+      "status_effect_id": "block",
+      "status_name": "BLOCK",
+      "status_description": "Chance to significantly reduce incoming damage through defensive positioning.",
+      "status_type": "Buff"
+    },
+    {
+      "status_effect_id": "dodge",
+      "status_name": "DODGE",
+      "status_description": "50% chance to completely avoid incoming attacks.",
+      "status_type": "Buff"
+    },
+    {
+      "status_effect_id": "strengthened",
+      "status_name": "STRENGTHENED",
+      "status_description": "Physical power increased by 20%, enhancing attack damage and effectiveness.",
+      "status_type": "Buff"
+    },
+    {
+      "status_effect_id": "endurance",
+      "status_name": "ENDURANCE",
+      "status_description": "Gain additional action point and increased maximum stamina for sustained combat.",
+      "status_type": "Buff"
+    },
+    {
+      "status_effect_id": "haste",
+      "status_name": "HASTE",
+      "status_description": "Supernatural speed grants an extra action point per turn.",
+      "status_type": "Buff"
+    },
+    {
+      "status_effect_id": "heal",
+      "status_name": "HEAL",
+      "status_description": "Gradual health restoration over time through magical or natural recovery.",
+      "status_type": "Buff"
+    },
+    {
+      "status_effect_id": "pain_tolerance",
+      "status_name": "PAIN TOLERANCE",
+      "status_description": "Reduced sensitivity to damage and improved resistance to debilitating effects.",
+      "status_type": "Buff"
+    },
+    {
+      "status_effect_id": "arcane_knowledge",
+      "status_name": "ARCANE KNOWLEDGE",
+      "status_description": "Enhanced understanding of mystical forces improves magical abilities.",
+      "status_type": "Buff"
+    },
+    {
+      "status_effect_id": "spell_power",
+      "status_name": "SPELL POWER",
+      "status_description": "Amplified magical energy increases the potency of all spell casting.",
+      "status_type": "Buff"
+    },
+    {
+      "status_effect_id": "archery",
+      "status_name": "ARCHERY",
+      "status_description": "Improved focus and technique enhances ranged combat effectiveness.",
+      "status_type": "Buff"
+    },
+    {
+      "status_effect_id": "toxic",
+      "status_name": "TOXIC",
+      "status_description": "Emanates poisonous aura that damages nearby enemies based on their health.",
+      "status_type": "Neutral"
+    },
+    {
+      "status_effect_id": "unlucky",
+      "status_name": "UNLUCKY",
+      "status_description": "Cursed with poor fortune, increasing chance of dealing reduced damage.",
+      "status_type": "Debuff"
+    },
+    {
+      "status_effect_id": "poisoned",
+      "status_name": "POISONED",
+      "status_description": "Suffering from toxins that cause continuous damage over time.",
+      "status_type": "Debuff"
+    },
+    {
+      "status_effect_id": "stunned",
+      "status_name": "STUNNED",
+      "status_description": "Temporarily incapacitated and unable to take actions.",
+      "status_type": "Debuff"
+    },
+    {
+      "status_effect_id": "weakened",
+      "status_name": "WEAKENED",
+      "status_description": "Reduced combat effectiveness and diminished damage output.",
+      "status_type": "Debuff"
+    },
+    {
+      "status_effect_id": "slowed",
+      "status_name": "SLOWED",
+      "status_description": "Reduced movement speed and action economy due to hindered mobility.",
+      "status_type": "Debuff"
+    },
+    {
+      "status_effect_id": "fragile",
+      "status_name": "FRAGILE",
+      "status_description": "Increased vulnerability to damage and reduced defensive capabilities.",
+      "status_type": "Debuff"
+    },
+    {
+      "status_effect_id": "max_health_reduced",
+      "status_name": "VITALITY DRAIN",
+      "status_description": "Maximum health capacity reduced, limiting healing potential.",
+      "status_type": "Debuff"
+    }
+  ]
+}

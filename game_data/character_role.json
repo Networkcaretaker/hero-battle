@@ -1,134 +1,89 @@
 {
-  "roles": [
-    {
-      "role_id": "tank",
-      "role_name": "Tank",
-      "role_description": "Frontline defenders who absorb damage and protect their allies. Tanks excel at drawing enemy attention and surviving focused attacks through high defense and health.",
-      "bonus_stats": [
-        { "stat": "bonus_health", "value": 50 },
-        { "stat": "bonus_physical_defence", "value": 15 },
-        { "stat": "bonus_magic_defence", "value": 10 }
-      ],
-      "skills": [
-        "heavy_armor",
-        "shield_mastery",
-        "taunt"
-      ],
-      "traits": [
-        "damage_reduction",
-        "threat_generation",
-        "immovable"
-      ],
-      "abilities": [
-        "shield_wall",
-        "provoke",
-        "defensive_stance"
-      ]
-    },
-    {
-      "role_id": "warrior",
-      "role_name": "Warrior",
-      "role_description": "Versatile melee combatants who balance offense and defense. Warriors are reliable fighters capable of both dealing and taking damage in close combat.",
-      "bonus_stats": [
-        { "stat": "bonus_physical_attack", "value": 12 },
-        { "stat": "bonus_health", "value": 25 },
-        { "stat": "bonus_physical_defence", "value": 8 }
-      ],
-      "skills": [
-        "weapon_mastery",
-        "combat_reflexes",
-        "endurance"
-      ],
-      "traits": [
-        "battle_hardened",
-        "weapon_expertise",
-        "second_wind"
-      ],
-      "abilities": [
-        "charge_attack",
-        "weapon_throw",
-        "battle_stance"
-      ]
-    },
-    {
-      "role_id": "marksman",
-      "role_name": "Marksman",
-      "role_description": "Precision fighters who excel at ranged combat and high damage output. Marksmen eliminate key targets from a distance but are vulnerable in close combat.",
-      "bonus_stats": [
-        { "stat": "bonus_physical_attack", "value": 18 },
-        { "stat": "bonus_agility", "value": 10 },
-        { "stat": "bonus_stamina", "value": 20 }
-      ],
-      "skills": [
-        "archery",
-        "marksmanship",
-        "quick_draw",
-        "tracking"
-      ],
-      "traits": [
-        "eagle_eye",
-        "steady_aim",
-        "glass_cannon"
-      ],
-      "abilities": [
-        "aimed_shot",
-        "multi_shot",
-        "hunters_mark"
-      ]
-    },
-    {
-      "role_id": "support",
-      "role_name": "Support",
-      "role_description": "Utility specialists who enhance allies and provide battlefield control. Support roles focus on healing, buffing, and enabling their team's success.",
-      "bonus_stats": [
-        { "stat": "bonus_mana", "value": 40 },
-        { "stat": "bonus_mana_recovery", "value": 5 },
-        { "stat": "bonus_intelligence", "value": 8 }
-      ],
-      "skills": [
-        "healing_arts",
-        "buff_magic",
-        "resource_management",
-        "empathy"
-      ],
-      "traits": [
-        "healing_efficiency",
-        "aura_mastery",
-        "team_player"
-      ],
-      "abilities": [
-        "mass_heal",
-        "team_blessing",
-        "dispel_magic",
-        "sanctuary"
-      ]
-    },
-    {
-      "role_id": "control",
-      "role_name": "Control",
-      "role_description": "Battlefield manipulators who disrupt enemies and control positioning. Control specialists excel at crowd control, area denial, and tactical disruption.",
-      "bonus_stats": [
-        { "stat": "bonus_magic_attack", "value": 15 },
-        { "stat": "bonus_mana", "value": 30 },
-        { "stat": "bonus_intelligence", "value": 12 }
-      ],
-      "skills": [
-        "crowd_control",
-        "battlefield_tactics",
-        "spell_disruption",
-        "area_magic"
-      ],
-      "traits": [
-        "spell_mastery",
-        "tactical_positioning",
-        "disruptor"
-      ],
-      "abilities": [
-        "mass_stun",
-        "terrain_control",
-        "silence_field",
-        "gravity_well"
-      ]
-    }
-  ]
+	"roles": [
+		{
+			"role_id": "tank",
+			"role_name": "Tank",
+			"role_description": "Frontline defenders who absorb damage and protect their allies. Tanks excel at drawing enemy attention and surviving focused attacks through high defense and health.",
+			"bonus_stats": [
+				{ "stat": "bonus_health", "value": 50 },
+				{ "stat": "bonus_physical_defence", "value": 15 },
+				{ "stat": "bonus_magic_defence", "value": 10 }
+			],
+			"skills": ["heavy_armour", "shield_mastery", "taunt"],
+			"traits": ["damage_reduction", "threat_generation", "immovable"],
+			"abilities": ["shield_wall", "provoke", "defensive_stance"]
+		},
+		{
+			"role_id": "warrior",
+			"role_name": "Warrior",
+			"role_description": "Versatile melee combatants who balance offense and defense. Warriors are reliable fighters capable of both dealing and taking damage in close combat.",
+			"bonus_stats": [
+				{ "stat": "bonus_physical_attack", "value": 12 },
+				{ "stat": "bonus_health", "value": 25 },
+				{ "stat": "bonus_physical_defence", "value": 8 }
+			],
+			"skills": ["weapon_mastery", "combat_reflexes", "endurance"],
+			"traits": ["battle_hardened", "weapon_expertise", "second_wind"],
+			"abilities": ["charge_attack", "weapon_throw", "battle_stance"]
+		},
+		{
+			"role_id": "marksman",
+			"role_name": "Marksman",
+			"role_description": "Precision fighters who excel at ranged combat and high damage output. Marksmen eliminate key targets from a distance but are vulnerable in close combat.",
+			"bonus_stats": [
+				{ "stat": "bonus_physical_attack", "value": 18 },
+				{ "stat": "bonus_agility", "value": 10 },
+				{ "stat": "bonus_stamina", "value": 20 }
+			],
+			"skills": ["archery", "marksmanship", "quick_draw", "tracking"],
+			"traits": ["eagle_eye", "steady_aim", "glass_cannon"],
+			"abilities": ["aimed_shot", "multi_shot", "hunters_mark"]
+		},
+		{
+			"role_id": "support",
+			"role_name": "Support",
+			"role_description": "Utility specialists who enhance allies and provide battlefield control. Support roles focus on healing, buffing, and enabling their team's success.",
+			"bonus_stats": [
+				{ "stat": "bonus_mana", "value": 40 },
+				{ "stat": "bonus_mana_recovery", "value": 5 },
+				{ "stat": "bonus_intelligence", "value": 8 }
+			],
+			"skills": [
+				"healing_arts",
+				"buff_magic",
+				"resource_management",
+				"empathy"
+			],
+			"traits": ["healing_efficiency", "aura_mastery", "team_player"],
+			"abilities": [
+				"mass_heal",
+				"team_blessing",
+				"dispel_magic",
+				"sanctuary"
+			]
+		},
+		{
+			"role_id": "control",
+			"role_name": "Control",
+			"role_description": "Battlefield manipulators who disrupt enemies and control positioning. Control specialists excel at crowd control, area denial, and tactical disruption.",
+			"bonus_stats": [
+				{ "stat": "bonus_magic_attack", "value": 15 },
+				{ "stat": "bonus_mana", "value": 30 },
+				{ "stat": "bonus_intelligence", "value": 12 }
+			],
+			"skills": [
+				"crowd_control",
+				"battlefield_tactics",
+				"spell_disruption",
+				"area_magic"
+			],
+			"traits": ["spell_mastery", "tactical_positioning", "disruptor"],
+			"abilities": [
+				"mass_stun",
+				"terrain_control",
+				"silence_field",
+				"gravity_well"
+			]
+		}
+	]
 }

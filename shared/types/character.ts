@@ -125,6 +125,10 @@ export interface Character {
 	status_effects: CharacterStatusEffect[]; // References active status effects with current duration
 	action_points: number; // start with 2 at beguining of turn, can be modified with status effects
 	ultimate_energy: number; // 1-100 percent based, energy is gained during battles and used for Ultimate ability
+
+	// Character Resistance and Weakness
+	resistance: Array<{ stat: string; value: number; }>; // Percentage of resistance to physical damage, magic damage, fire magic, ice magic, bows, etc. Less damage
+	weakness: Array<{ stat: string; value: number; }>; // Percentage of weakness to physical damage, magic damage, fire magic, ice magic, bows, etc. More damage.
 	
 	// Character Flags
 	flags: CharacterFlags;
@@ -176,7 +180,7 @@ export interface CharacterRole {
 	readonly role_id: CharacterRoles; // Unique ID referencing CharacterRoles
 	readonly role_name: string; // role_id.toUpperCase()
     readonly role_description: string; // A description of the role
-    readonly bonus_stats: Array<{ stat: string; value: number; }>;
+    readonly bonus_stats: Array<{ stat: string; value: number; }>; // Bonus stats gained each level
     readonly skills?: string[]; // IDs referencing skill definitions
     readonly traits?: string[]; // IDs referencing trait definitions
     readonly abilities?: string[]; // IDs referencing ability definitions
@@ -190,29 +194,55 @@ export enum CharacterRoles {
 }
 
 // Character Trait
+// Traits give a chance of applying a status effect
+// Traits can be activated when attacking and enemy, when an enemy attacks or both
+// chance_of_success = CharacterTrait.traint_power / enemy.total_power
 export interface CharacterTrait {
-    trait_id: CharacterTraits; // References shared trait definition
-    base_trait_power: number; // Invested power from player resources
+    trait_id: CharacterTraits; // Uniques ID from CharacterTraits
+    base_trait_power: number; // Invested power from player resources (starts at 5)
     bonus_trait_power: number; // Bonus power from equipment/items
     trait_power: number; // Total power: base_trait_power + bonus_trait_power
     current_cooldown: number; // Turns remaining before can activate again (0 = ready)
-    is_active: boolean; // Whether trait is currently available (from equipped items/etc)
+    is_available: boolean; // Whether trait is currently available (from equipped items, class, race, role, etc)
+    is_active: boolean; // Whether trait is currently active
+	trait_source?: string; // Source of active trait (from equipment, race, role, class, etc)
 }
 // Shared trait definitions (stored in game data JSON)
 export interface TraitDefinition {
     readonly trait_id: CharacterTraits; // Unique identifier
-    readonly trait_name: string; // Display name ("Lucky", "Critical Hit")
-    readonly trait_description: string; // What the trait does
+    readonly trait_name: string; // Display name ("Lucky", "Critical Hit") trait_id.toUpperCase()
+    readonly trait_description: string; // A description of what the trait does
+    readonly trait_target: string; // will apply the status effect to self, enemy, enemies, ally or allies
+    readonly trait_activation: string; // When can a trait be activated (attack, defence, both)
     readonly status_effect_id: string; // Status effect this trait activates
     readonly duration: number; // How many turns the status effect lasts
-    readonly cooldown: number; // How many turns before trait can activate again
+    readonly cooldown: number; // How many turns before trait can activate again (default 3)
+	readonly level: number; // required character level to allow trait 
 }
 export enum CharacterTraits {
-	LUCKY = "Lucky", // adds lucky status effect
-	UNLUCKY = "Unlucky", // adds unlucky status effect
-	BRUTAL = "Brutal", // adds critical_hit status effect
-	PROTECTOR = "Protector", // adds block status effect
-	AGILE = "Agile" // applies dodge status effect
+	LUCKY = "lucky", // chance to apply lucky status effect to self for 2 turns
+	UNLUCKY = "unlucky", // chance to apply lucky status effect to enemy for 2 turns
+	VERY_LUCKY = "very_lucky", // chance to apply lucky status effect to allies (including self) for 1 turn
+	VERY_UNLUCKY = "very_unlucky", // chance to apply lucky status effect to enemies for 1 turn
+	BRUTAL = "brutal", // chance to apply critical_hit status effect to self for 2 turns
+	LEADERSHIP = "leadership", // chance to apply critical_hit status effect to ally for 2 turns
+	PROTECTOR = "protector", // chance to apply block status effect to self for 2 turns
+	TACTICS = "battlefield_tactics", // chance to apply critical_hit status effect to allies for 1 turn
+	AGILE = "agile", // chance to apply dodge status effect to self for 2 turns
+	STRONG = "strong", // chance to apply strengthened status effect to self for 2 turns
+	ENDURANCE = "endurance", // chance to apply endurance status effect to self for 2 turns
+	ARCHER = "archer", // chance to apply archery status effect to self for 2 turns
+	FITNESS = "fitness", // chance to apply haste status effect to self for 1 turn
+	FIRST_AID = "first_aid", // chance to apply heal status effect to self for 2 turns
+	TOXIC = "toxic", // chance to apply toxic status effect to self for 3 turns
+	PAIN = "pain_tolerance", // chance to apply pain_tolerance status effect to self for 2 turns
+	VENOMOUS = "venomous", // chance to apply poisoned status effect to enemy for 3 turns
+	DISRUPTOR = "disruptor", // chance to apply stunned status effect to enemy for 1 turn
+	STUBBORN = "stubborn", // chance to apply weakend status effect to enemy for 2 turns
+	FOREST_WALKER = "forest_walker", // chance to apply slowed status effect to enemies for 1 turn
+	ARCANE = "arcane_knowledge", // chance to apply arcane status effect to self for 2 turns
+    SPELL_POWER = "spell_power", // chance to apply spell_power status effect to self for 2 turns
+	FRAGILE = "fragile_body", // chance to apply fragile status effect to enemy for 3 turns
 }
 
 // Character's skill instances
@@ -234,9 +264,9 @@ export interface SkillDefinition {
 export interface SkillRequirements {
     skill_id: string; // Required skill
     minimum_level?: number; // Minimum skill level needed (1-10)
-    race_id?: string; // Optional race requirement
-    class_id?: string; // Optional class requirement  
-    role_id?: string; // Optional role requirement
+    race_ids?: string[]; // Optional race requirement
+    class_ids?: string[]; // Optional class requirement  
+    role_ids?: string[]; // Optional role requirement
 }
 // Skill bonuses
 export interface SkillBonus {
@@ -244,12 +274,14 @@ export interface SkillBonus {
     value: number; // Bonus amount per level
 }
 export enum CharacterSkills {
-	LIGHT_ARMOUR = "Light_Armour",
-	HEAVY_ARMOUR = "Heavy_Armour",
-	SHORT_SWORD = "Short_Sword",
-	LONG_SWORD = "Long_Sword",
-	BOW = "Bow",
-	SPELLS = "Spells"
+	LIGHT_ARMOUR = "light_armour",
+	HEAVY_ARMOUR = "heavy_armour",
+	SHORT_SWORD = "short_sword",
+	LONG_SWORD = "long_sword",
+	BOW = "bow",
+	AXE = "axe",
+	BATTLE_AXE = "battle_axe",
+	SPELL = "spell"
 }
 
 // Character's ability instances
@@ -262,6 +294,7 @@ export interface AbilityDefinition {
     readonly ability_name: string; // Display name ("Fireball", "Heal", "Power Strike")
     readonly ability_description: string; // What the ability does
     readonly ability_type: AbilityTypes; // What the ability does
+    readonly min_level: number; // Minimum level required to use ability
     // Damage, healing and energy recovery - these are calculated at runtime
     damage?: number; // e.g. "physical_attack * 1.0", "magic_attack * 0.2"
     healing?: number; // e.g. "magic_attack * 0.1"
@@ -280,17 +313,28 @@ export interface AbilityDefinition {
     readonly stamina_cost: number; // Stamina required to use
     readonly cooldown: number; // Turns before usable again 
     // Status Effects
-    readonly apply_status?: string; // Status effect ID to apply (optional)
+    readonly apply_status?: string[]; // Status effect ID to apply (optional)
     readonly status_duration: number; // How long status effect lasts
+	// Optional fields for complex abilities
+	readonly damage_type?: "flat" | "percentage_current" | "percentage_max";
+	readonly healing_type?: "flat" | "percentage_current" | "percentage_max";
+	readonly recovery_type?: "flat" | "percentage_current" | "percentage_max";
+
 }
 export enum AbilityTypes {
-	ULTIMATE = "Ultimate",
-	PHYSICAL = "Physical Attack",
-	MAGICAL = "Magic Attack",
-	RANGED = "Ranged Attack",
-	HEAL = "Healing",
-	RECOVER = "Recovery",
-	BUFF = "Status Effect"
+	ULTIMATE = "ultimate",
+	PHYSICAL = "physical_attack",
+	MAGICAL = "magic_attack",
+	RANGED = "ranged_ttack",
+	HEALING = "healing",
+	RECOVER = "recovery",
+	BUFF = "status Effect"
+}
+export enum Abilities {
+	"uppercut",
+	"dwarven_blow",
+	"elven_strike",
+	"orc_bash"
 }
 
 // Character's active status effects
@@ -301,26 +345,12 @@ export interface CharacterStatusEffect {
 }
 // Status effect definitions
 export interface StatusEffectDefinition {
-    readonly status_effect_id: string;    // Unique identifier
-    readonly status_name: string;         // Display name ("Poisoned", "Stunned", etc.)
-    readonly status_description: string;  // What the effect does
-    readonly status_type: StatusType;     // Buff, Debuff, or Neutral
-    
-    // Effect properties
-    readonly damage_per_turn?: number;    // Damage dealt each turn (poison)
-    readonly healing_per_turn?: number;   // Healing done each turn (regeneration)
-    readonly prevents_movement: boolean;  // Blocks movement (stun, root)
-    readonly prevents_actions: boolean;   // Blocks abilities (stun, silence)
-    
-    // Stat modifications (applied while active)
-    readonly stat_modifiers?: Array<{
-        stat: string;                     // Which stat to modify
-        modifier_type: 'multiply' | 'add'; // How to apply the modifier
-        value: number;                    // Amount (0.5 for half, 10 for +10, etc.)
-    }>;
-    
-    readonly max_stacks: number;          // Maximum times this can stack (1 = no stacking)
-    readonly is_removable: boolean;       // Can be cleansed/dispelled
+    readonly status_effect_id: string;
+    readonly status_name: string;
+    readonly status_description: string;
+    readonly status_type: StatusType; // For UI color-coding/grouping
+    readonly max_stacks?: number; // Default 1, only specify if different
+    readonly is_removable?: boolean; // Default true, only specify if false
 }
 // Status effect types
 export enum StatusType {
@@ -329,15 +359,29 @@ export enum StatusType {
     NEUTRAL = "Neutral"    // Neither positive nor negative
 }
 export enum CharacterStatusEffects {
-	LUCKY = "Lucky", 
-	UNLUCKY = "Unlucky",
-	CRITICAL = "Critical_Hit",
-	BLOCK = "Block",
-	DODGE = "Dodge",
-	POISONED = "Poisoned",
-	STUNNED = "Stunned",
-	WEAKENED = "Weakend",
-	STRENGTHENED = "Strengthened"
+	// Positive Effects
+	LUCKY = "lucky", // increases damage modifier for more of a chance at higher damage than base damage. {base_mod = (0.1, 0.8, 0.1), lucky_mod = (0, 0.5, 0.5)}
+	CRITICAL = "critical_hit", // critical hit chance for damage multiplier 1.2 | 1.3 | 1.4 | 1.5 | 2 | 3 | 5 ... more damage
+	BLOCK = "block", // chance to block incoming damage, damage multiplier 0.2 | 0.3 | 0.4 | 0.5 | 0.6 | 0.7 | 0.8 | 1 ... less damage
+	DODGE = "dodge", // 50% chance to dodge attack
+	STRENGTHENED = "strengthened", // +20% Strength
+	ENDURANCE = "endurance", // +1 action point + 100 max_stamina
+	HASTE = "haste", // +1 action point
+	HEAL = "heal",
+	PAIN = "pain_tolerance",
+	ARCANE = "arcane_knowledge",
+    SPELL_POWER = "spell_power",
+	ARCHERY = "archery",
+	// Neutral Effects
+	TOXIC = "toxic", // any enemy withing a range of 1 gets damage of 10% health
+	// Negative Effects
+	UNLUCKY = "unlucky", // decreases damage modifier for more of a chance at less damage than base damage. {base_mod = (0.1, 0.8, 0.1), nulucky_mod = (0.5, 0.5, 0)}
+	POISONED = "poisoned",
+	STUNNED = "stunned",
+	WEAKENED = "weakend",
+	SLOWED = "slowed",
+	FRAGILE = "fragile",
+	VITALITY_DRAIN = "max_health_reduced"
 }
 
 // Character Flags
@@ -450,6 +494,25 @@ export interface ArmourRequirements {
     required_race?: string;                // Race restriction (optional)
     required_class?: string;               // Class restriction (optional)
     required_role?: string;                // Role restriction (optional)
+}
+
+// Damage Types (important for extra damage calculations including resistance and weakness effects)#
+// Some abilities can have multiple damage types eg: damage = {magical_damage:5, fire_damage:20} (although the values will be calculated based on character stats)
+export enum DamageType {
+	PHYSICAL = "physical_damage",
+	MAGIC = "magical_damage",
+	PURE = "pure_damage",
+	FIRE = "fire_damage",
+	ICE = "ice_damage",
+	EARTH = "earth_damage",
+	AIR = "air_damage",
+	DARK = "dark_magic_damage",
+	LIGHT = "light_magic_damage",
+	RANGE = "Range_damage",
+	STAMINA = "stamina_drain",
+	MANA = "mana_drain",
+	ENERGY = "energy_drain",
+	ULTIMATE = "ultimate_damage"
 }
 
 // To add to character: pedigree, division, species, faction, runes, glyphs, rings, amulets, sheilds, relics

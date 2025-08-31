@@ -1,0 +1,222 @@
+{
+  "character_skills": [
+    {
+      "skill_id": "light_armour",
+      "skill_name": "LIGHT ARMOUR",
+      "skill_description": "Expertise with light armour, providing enhanced mobility and reduced penalties while maintaining protection.",
+      "skill_category": "Armour",
+      "bonuses": [
+        {
+          "stat": "bonus_agility",
+          "value": 1
+        },
+        {
+          "stat": "bonus_physical_defence",
+          "value": 2
+        },
+        {
+          "stat": "bonus_magic_defence",
+          "value": 2
+        }
+      ],
+      "requirements": {
+        "skill_id": "light_armour",
+        "minimum_level": 1,
+		"class_ids": ["Rouge", "Healer", "Commander", "Mage"]
+      }
+    },
+    {
+      "skill_id": "heavy_armour",
+      "skill_name": "HEAVY ARMOUR",
+      "skill_description": "Mastery of heavy armour systems, providing maximum protection at the cost of mobility.",
+      "skill_category": "Armour",
+      "bonuses": [
+        {
+          "stat": "bonus_strength",
+          "value": 1
+        },
+        {
+          "stat": "bonus_physical_defence",
+          "value": 5
+        },
+        {
+          "stat": "bonus_magic_defence",
+          "value": 5
+        }
+      ],
+      "requirements": {
+        "skill_id": "heavy_armour",
+        "minimum_level": 1,
+        "class_ids": ["brawler", "Commander"],
+		"Role_ids": ["tank"]
+      }
+    },
+    {
+      "skill_id": "short_sword",
+      "skill_name": "SHORT SWORD",
+      "skill_description": "Proficiency with short blades, emphasizing speed, precision, and close-quarters combat techniques.",
+      "skill_category": "Weapon",
+      "bonuses": [
+        {
+          "stat": "bonus_agility",
+          "value": 2
+        },
+        {
+          "stat": "bonus_physical_attack",
+          "value": 2
+        },
+        {
+          "stat": "bonus_stamina_recovery",
+          "value": 1
+        }
+      ],
+      "requirements": {
+        "skill_id": "short_sword",
+        "minimum_level": 1
+      }
+    },
+    {
+      "skill_id": "long_sword",
+      "skill_name": "LONG SWORD",
+      "skill_description": "Mastery of long blades, focusing on reach, power, and versatile combat applications.",
+      "skill_category": "Weapon",
+      "bonuses": [
+        {
+          "stat": "bonus_strength",
+          "value": 2
+        },
+        {
+          "stat": "bonus_physical_attack",
+          "value": 3
+        },
+        {
+          "stat": "bonus_physical_defence",
+          "value": 2
+        }
+      ],
+      "requirements": {
+        "skill_id": "long_sword",
+        "minimum_level": 1,
+        "role_ids": ["warrior"]
+      }
+    },
+	{
+      "skill_id": "axe",
+      "skill_name": "AXE",
+      "skill_description": "Weild an axe",
+      "skill_category": "Weapon",
+      "bonuses": [
+        {
+          "stat": "bonus_physical_attack",
+          "value": 5
+        }
+      ],
+      "requirements": {
+        "skill_id": "axe",
+        "minimum_level": 1,
+		"race_ids": ["dwarf", "elf"],
+        "class_ids": ["brawler"],
+		"role_ids": ["warrior", "tank"]
+      }
+    },
+	{
+      "skill_id": "battle_axe",
+      "skill_name": "BATTLE AXE",
+      "skill_description": "Weild a massive battle axe",
+      "skill_category": "Weapon",
+      "bonuses": [
+		{
+          "stat": "bonus_strength",
+          "value": 2
+        },
+        {
+          "stat": "bonus_physical_attack",
+          "value": 20
+        }
+      ],
+      "requirements": {
+        "skill_id": "battle_axe",
+        "minimum_level": 1,
+		"race_ids": ["dwarf"],
+		"role_ids": ["warrior", "tank"]
+      }
+    },
+    {
+      "skill_id": "bow",
+      "skill_name": "BOW",
+      "skill_description": "Expertise in archery, enabling precise ranged attacks and tactical positioning advantages.",
+      "skill_category": "Weapon",
+      "bonuses": [
+        {
+          "stat": "bonus_agility",
+          "value": 3
+        },
+        {
+          "stat": "bonus_physical_attack",
+          "value": 2
+        },
+        {
+          "stat": "intelligence",
+          "value": 1
+        }
+      ],
+      "requirements": {
+        "skill_id": "bow",
+        "minimum_level": 1,
+        "race_ids": ["elf", "human"]
+      }
+    },
+    {
+      "skill_id": "spells",
+      "skill_name": "SPELLS",
+      "skill_description": "Knowledge of arcane arts and spell casting, enabling magical attacks, healing, and battlefield control.",
+      "skill_category": "Magic",
+      "bonuses": [
+        {
+          "stat": "bonus_magic",
+          "value": 2
+        },
+        {
+          "stat": "bonus_intelligence",
+          "value": 1
+        },
+        {
+          "stat": "bonus_magic_attack",
+          "value": 2
+        },
+        {
+          "stat": "bonus_mana",
+          "value": 15
+        },
+        {
+          "stat": "bonus_mana_recovery",
+          "value": 2
+        }
+      ],
+      "requirements": {
+        "skill_id": "spells",
+        "minimum_level": 1,
+        "class_ids": ["mage"]
+      }
+    },
+	{
+      "skill_id": "skill",
+      "skill_name": "SKILL",
+      "skill_description": "Decsription",
+      "skill_category": "Category",
+      "bonuses": [
+        {
+          "stat": "bonus_stat",
+          "value": 1
+        }
+      ],
+      "requirements": {
+        "skill_id": "skill_id",
+        "minimum_level": 1,
+		"race_ids": ["race_id"],
+        "class_ids": ["class_id"],
+		"role_ids": ["role_id"]
+      }
+    }
+  ]
+}

@@ -4,19 +4,18 @@
       "race_id": "Human",
       "race_name": "Human",
       "race_description": "Versatile and adaptable beings with balanced abilities. Humans excel at learning diverse skills and adapting to any situation, making them valuable allies in any party composition.",
-      "strength": 0,
+      "strength": 1,
       "intelligence": 2,
-      "agility": 0,
+      "agility": 1,
       "magic": 1,
       "skills": [
-        "weapon_mastery",
-        "tactical_awareness"
-      ],
+		 "short_sword"
+	  ],
       "traits": [
-        "adaptable",
-        "quick_learner"
-      ],
+		"leadership"
+	  ],
       "abilities": [
+		"uppercut",
         "human_cunning"
       ]
     },
@@ -25,46 +24,35 @@
       "race_name": "Dwarf",
       "race_description": "Hardy mountain folk known for their incredible toughness and craftsmanship. Dwarves are natural defenders with unmatched endurance and resistance to magical effects.",
       "strength": 2,
-      "intelligence": 0,
-      "agility": 1,
+      "intelligence": 1,
+      "agility": 2,
       "magic": 0,
       "skills": [
-        "heavy_armor",
-        "weapon_crafting",
-        "mining"
+        "axe"
       ],
       "traits": [
-        "stone_skin",
-        "magic_resistance",
-        "stubborn_will"
+        "stubborn"
       ],
       "abilities": [
-        "dwarven_blow",
-        "fortify"
+        "dwarven_blow"
       ]
     },
     {
       "race_id": "Elf",
       "race_name": "Elf",
       "race_description": "Graceful and mystical beings with deep connections to nature and magic. Elves possess keen senses and natural agility, excelling at ranged combat and magical arts.",
-      "strength": 0,
+      "strength": 1,
       "intelligence": 1,
       "agility": 1,
-      "magic": 1,
+      "magic": 2,
       "skills": [
-        "archery",
-        "nature_magic",
-        "stealth",
-        "herbalism"
+        "bow"
       ],
       "traits": [
-        "keen_senses",
-        "forest_walker",
-        "magical_affinity"
-      ],
+		"agile"
+	  ],
       "abilities": [
-        "elven_strike",
-        "nature_blessing"
+        "elven_strike"
       ]
     },
     {
@@ -73,21 +61,16 @@
       "race_description": "Powerful and aggressive warriors driven by primal instincts. Orcs possess immense physical strength and natural ferocity, making them formidable opponents in direct combat.",
       "strength": 3,
       "intelligence": 0,
-      "agility": 0,
-      "magic": 0,
+      "agility": 1,
+      "magic": 1,
       "skills": [
-        "berserker_rage",
-        "intimidation",
-        "survival"
+        "heavy_armour"
       ],
       "traits": [
-        "bloodlust",
-        "thick_hide",
-        "battle_fury"
+        "brutal"
       ],
       "abilities": [
-        "orc_bash",
-        "war_cry"
+        "orc_bash"
       ]
     }
   ]

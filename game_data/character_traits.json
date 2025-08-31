@@ -1,0 +1,257 @@
+{
+  "character_traits": [
+    {
+      "trait_id": "lucky",
+      "trait_name": "LUCKY",
+      "trait_description": "Grants a chance to apply lucky status effect, increasing overall effectiveness.",
+      "trait_target": "self",
+      "trait_activation": "both",
+      "status_effect_id": "lucky",
+      "duration": 2,
+      "cooldown": 3,
+	  "level": 1
+    },
+    {
+      "trait_id": "unlucky",
+      "trait_name": "UNLUCKY",
+      "trait_description": "Grants a chance to curse an enemy with bad luck, reducing their effectiveness.",
+      "trait_target": "enemy",
+      "trait_activation": "defence",
+      "status_effect_id": "unlucky",
+      "duration": 2,
+      "cooldown": 3,
+	  "level": 1
+    },
+    {
+      "trait_id": "very_lucky",
+      "trait_name": "VERY LUCKY",
+      "trait_description": "Grants a chance to bless all allies with good fortune, temporarily boosting everyone's luck.",
+      "trait_target": "allies",
+      "trait_activation": "both",
+      "status_effect_id": "lucky",
+      "duration": 1,
+      "cooldown": 3,
+	  "level": 3
+    },
+    {
+      "trait_id": "very_unlucky",
+      "trait_name": "VERY UNLUCKY",
+      "trait_description": "Grants a chance to curse all enemies with misfortune, reducing their effectiveness across the battlefield.",
+      "trait_target": "enemies",
+      "trait_activation": "both",
+      "status_effect_id": "lucky",
+      "duration": 1,
+      "cooldown": 3,
+	  "level": 3
+    },
+    {
+      "trait_id": "brutal",
+      "trait_name": "BRUTAL",
+      "trait_description": "Grants a chance to enter a brutal combat state, significantly increasing your critical hit potential.",
+      "trait_target": "self",
+      "trait_activation": "attack",
+      "status_effect_id": "critical_hit",
+      "duration": 2,
+      "cooldown": 3,
+	  "level": 1
+    },
+    {
+      "trait_id": "leadership",
+      "trait_name": "LEADERSHIP",
+      "trait_description": "Grants a chance to inspire an ally with tactical guidance, boosting their critical hit effectiveness.",
+      "trait_target": "ally",
+      "trait_activation": "both",
+      "status_effect_id": "critical_hit",
+      "duration": 2,
+      "cooldown": 3,
+	  "level": 2
+    },
+    {
+      "trait_id": "protector",
+      "trait_name": "PROTECTOR",
+      "trait_description": "Grants a chance to raise your guard when threatened, providing enhanced blocking capability.",
+      "trait_target": "self",
+      "trait_activation": "defence",
+      "status_effect_id": "block",
+      "duration": 2,
+      "cooldown": 3,
+	  "level": 1
+    },
+    {
+      "trait_id": "battlefield_tactics",
+      "trait_name": "BATTLEFIELD TACTICS",
+      "trait_description": "Grants a chance to coordinate team tactics, boosting all allies' critical hit potential for a brief moment.",
+      "trait_target": "allies",
+      "trait_activation": "both",
+      "status_effect_id": "critical_hit",
+      "duration": 1,
+      "cooldown": 3,
+	  "level": 3
+    },
+    {
+      "trait_id": "agile",
+      "trait_name": "AGILE",
+      "trait_description": "Grants a chance to enter an evasive stance, significantly improving your ability to dodge attacks.",
+      "trait_target": "self",
+      "trait_activation": "defence",
+      "status_effect_id": "dodge",
+      "duration": 2,
+      "cooldown": 3,
+	  "level": 1
+    },
+    {
+      "trait_id": "strong",
+      "trait_name": "STRONG",
+      "trait_description": "Grants a chance to tap into your physical power, temporarily strengthening your attacks and resilience.",
+      "trait_target": "self",
+      "trait_activation": "both",
+      "status_effect_id": "strengthened",
+      "duration": 2,
+      "cooldown": 3,
+	  "level": 1
+    },
+    {
+      "trait_id": "endurance",
+      "trait_name": "ENDURANCE",
+      "trait_description": "Grants a chance to draw upon your stamina reserves, providing enhanced endurance and staying power.",
+      "trait_target": "self",
+      "trait_activation": "both",
+      "status_effect_id": "endurance",
+      "duration": 2,
+      "cooldown": 3,
+	  "level": 1
+    },
+    {
+      "trait_id": "archer",
+      "trait_name": "ARCHER",
+      "trait_description": "Grants a chance to focus your ranged combat skills, improving accuracy and ranged attack effectiveness.",
+      "trait_target": "self",
+      "trait_activation": "attack",
+      "status_effect_id": "archery",
+      "duration": 2,
+      "cooldown": 3,
+	  "level": 1
+    },
+    {
+      "trait_id": "fitness",
+      "trait_name": "FITNESS",
+      "trait_description": "Grants a chance to burst into action with enhanced speed, temporarily increasing your action economy.",
+      "trait_target": "self",
+      "trait_activation": "both",
+      "status_effect_id": "haste",
+      "duration": 1,
+      "cooldown": 3,
+	  "level": 2
+    },
+    {
+      "trait_id": "first_aid",
+      "trait_name": "FIRST AID",
+      "trait_description": "Grants a chance to apply field medicine to yourself, providing healing over time.",
+      "trait_target": "self",
+      "trait_activation": "both",
+      "status_effect_id": "heal",
+      "duration": 2,
+      "cooldown": 3,
+	  "level": 2
+    },
+    {
+      "trait_id": "toxic",
+      "trait_name": "TOXIC",
+      "trait_description": "Grants a chance to build up toxins in your system that enhance your offensive capabilities over time.",
+      "trait_target": "self",
+      "trait_activation": "both",
+      "status_effect_id": "toxic",
+      "duration": 3,
+      "cooldown": 3,
+	  "level": 2
+    },
+    {
+      "trait_id": "pain_tolerance",
+      "trait_name": "PAIN TOLERANCE",
+      "trait_description": "Grants a chance to ignore pain and push through injuries, reducing the impact of damage taken.",
+      "trait_target": "self",
+      "trait_activation": "defence",
+      "status_effect_id": "pain_tolerance",
+      "duration": 2,
+      "cooldown": 3,
+	  "level": 2
+    },
+    {
+      "trait_id": "venomous",
+      "trait_name": "VENOMOUS",
+      "trait_description": "Grants a chance to inject venom into your attacks, poisoning enemies and causing damage over time.",
+      "trait_target": "enemy",
+      "trait_activation": "attack",
+      "status_effect_id": "poisoned",
+      "duration": 3,
+      "cooldown": 3,
+	  "level": 2
+    },
+    {
+      "trait_id": "disruptor",
+      "trait_name": "DISRUPTOR",
+      "trait_description": "Grants a chance to disrupt enemy actions with precise strikes, temporarily stunning them.",
+      "trait_target": "enemy",
+      "trait_activation": "attack",
+      "status_effect_id": "stunned",
+      "duration": 1,
+      "cooldown": 3,
+	  "level": 2
+    },
+    {
+      "trait_id": "stubborn",
+      "trait_name": "STUBBORN",
+      "trait_description": "Grants a chance to demoralize enemies through sheer determination, weakening their resolve.",
+      "trait_target": "enemy",
+      "trait_activation": "both",
+      "status_effect_id": "weakened",
+      "duration": 2,
+      "cooldown": 3,
+	  "level": 2
+    },
+    {
+      "trait_id": "forest_walker",
+      "trait_name": "FOREST WALKER",
+      "trait_description": "Grants a chance to use natural terrain knowledge to hinder enemy movement, slowing down all foes.",
+      "trait_target": "enemies",
+      "trait_activation": "both",
+      "status_effect_id": "slowed",
+      "duration": 1,
+      "cooldown": 3,
+	  "level": 5
+    },
+    {
+      "trait_id": "arcane_knowledge",
+      "trait_name": "ARCANE",
+      "trait_description": "Grants a chance to tap into mystical knowledge, enhancing your magical abilities and understanding.",
+      "trait_target": "self",
+      "trait_activation": "both",
+      "status_effect_id": "arcane",
+      "duration": 2,
+      "cooldown": 3,
+	  "level": 2
+    },
+    {
+      "trait_id": "spell_power",
+      "trait_name": "SPELL POWER",
+      "trait_description": "Grants a chance to channel additional magical energy, amplifying your spell casting abilities.",
+      "trait_target": "self",
+      "trait_activation": "attack",
+      "status_effect_id": "spell_power",
+      "duration": 2,
+      "cooldown": 3,
+	  "level": 1
+    },
+    {
+      "trait_id": "fragile_body",
+      "trait_name": "FRAGILE",
+      "trait_description": "Grants a chance to exploit enemy weaknesses, making them more vulnerable to damage.",
+      "trait_target": "enemy",
+      "trait_activation": "attack",
+      "status_effect_id": "fragile",
+      "duration": 3,
+      "cooldown": 3,
+	  "level": 2
+    }
+  ]
+}
