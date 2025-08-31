@@ -33,3 +33,4 @@ logs
 .firebase/
 firebase-debug.log
 
+.dev/
