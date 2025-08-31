@@ -1,0 +1,129 @@
+{
+  "classes": [
+    {
+      "class_id": "Mage",
+      "class_name": "Mage",
+      "class_description": "Masters of arcane arts who wield devastating magical powers from a distance. Mages excel at area damage and magical utility but are fragile in direct combat.",
+      "strength": 0,
+      "intelligence": 2,
+      "agility": 0,
+      "magic": 3,
+      "skills": [
+        "elemental_magic",
+        "spell_focus",
+        "mana_efficiency"
+      ],
+      "traits": [
+        "arcane_knowledge",
+        "spell_power",
+        "fragile_body"
+      ],
+      "abilities": [
+        "fireball",
+        "lightning_storm",
+        "mana_shield"
+      ]
+    },
+    {
+      "class_id": "Brawler",
+      "class_name": "Brawler",
+      "class_description": "Fierce melee combatants who rely on raw physical power and aggression. Brawlers excel at close-quarters combat and can take significant punishment.",
+      "strength": 2,
+      "intelligence": 1,
+      "agility": 2,
+      "magic": 0,
+      "skills": [
+        "unarmed_combat",
+        "intimidation",
+        "pain_tolerance"
+      ],
+      "traits": [
+        "iron_fists",
+        "berserker_rage",
+        "thick_skin"
+      ],
+      "abilities": [
+        "power_strike",
+        "ground_slam",
+        "intimidating_shout"
+      ]
+    },
+    {
+      "class_id": "Rouge",
+      "class_name": "Rogue",
+      "class_description": "Cunning specialists in stealth, precision strikes, and battlefield mobility. Rogues excel at hit-and-run tactics and exploiting enemy weaknesses.",
+      "strength": 1,
+      "intelligence": 1,
+      "agility": 2,
+      "magic": 1,
+      "skills": [
+        "stealth",
+        "lockpicking",
+        "backstab",
+        "acrobatics"
+      ],
+      "traits": [
+        "shadow_step",
+        "critical_strike",
+        "evasion"
+      ],
+      "abilities": [
+        "sneak_attack",
+        "smoke_bomb",
+        "poison_blade"
+      ]
+    },
+    {
+      "class_id": "Healer",
+      "class_name": "Healer",
+      "class_description": "Divine practitioners who mend wounds and support allies with protective magic. Healers are essential for sustaining a party through prolonged battles.",
+      "strength": 0,
+      "intelligence": 3,
+      "agility": 1,
+      "magic": 1,
+      "skills": [
+        "divine_magic",
+        "herbalism",
+        "first_aid",
+        "purification"
+      ],
+      "traits": [
+        "healing_touch",
+        "divine_favor",
+        "pacifist"
+      ],
+      "abilities": [
+        "heal",
+        "group_heal",
+        "purify",
+        "blessing"
+      ]
+    },
+    {
+      "class_id": "Commander",
+      "class_name": "Commander",
+      "class_description": "Tactical leaders who excel at coordinating allies and controlling the battlefield. Commanders provide strategic advantages and inspire their team to greater heights.",
+      "strength": 2,
+      "intelligence": 2,
+      "agility": 1,
+      "magic": 0,
+      "skills": [
+        "leadership",
+        "tactical_planning",
+        "rally",
+        "formation_fighting"
+      ],
+      "traits": [
+        "inspiring_presence",
+        "tactical_mind",
+        "battlefield_awareness"
+      ],
+      "abilities": [
+        "battle_orders",
+        "inspire_courage",
+        "tactical_strike",
+        "rally_troops"
+      ]
+    }
+  ]
+}
