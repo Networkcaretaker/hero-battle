@@ -6,6 +6,9 @@
     "admin"
   ],
   "scripts": {
+	"copy-assets:game": "xcopy shared\\assets game\\public\\assets /E /I /Y",
+    "copy-assets:admin": "xcopy shared\\assets admin\\public\\assets /E /I /Y", 
+    "copy-assets": "npm run copy-assets:game && npm run copy-assets:admin",
     "dev:game": "cd game && npm run dev",
     "dev:admin": "cd admin && npm run dev",
     "build:game": "cd game && npm run build",
