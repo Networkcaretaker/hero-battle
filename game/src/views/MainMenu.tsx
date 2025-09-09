@@ -65,7 +65,7 @@ const MainMenu: React.FC = () => {
                     </button>
 
                     <button
-                        onClick={() => navigate('/character-battle')}
+                        onClick={() => navigate('/character-selection')}
                         className={`group w-full max-w-md mx-auto block bg-gradient-to-r from-green-600 to-teal-600 hover:from-green-500 hover:to-teal-500 text-white font-bold py-6 px-8 rounded-xl shadow-2xl transform hover:scale-105 transition-all duration-300 hover:shadow-green-500/50`}
                     >
                         <div className="flex items-center justify-center space-x-4">

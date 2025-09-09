@@ -1,27 +1,38 @@
 import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { Sword, Heart } from 'lucide-react';
-import { Character } from '@shared/types/character';
+import { Character as CharacterType } from '@shared/types/character';
 import { load_characters } from '@shared/game_data/character_data';
 import { basic_attack, basic_heal } from '../services/battle_functions';
 import character_abilities from '@shared/game_data/character_abilies.json';
+import { BattleEffect } from '../services/battle_effects.tsx';
+
+interface BattleCharacter extends CharacterType {
+    instance: 'hero' | 'enemy';
+}
 
 const CharacterBattle: React.FC = () => {
+  const location = useLocation();
   const [battleLog, setBattleLog] = useState<string[]>([])
-  const [hero, setHero] = useState<Character | undefined>()
-  const [enemy, setEnemy] = useState<Character | undefined>()
+  const [hero, setHero] = useState<BattleCharacter | undefined>()
+  const [enemy, setEnemy] = useState<BattleCharacter | undefined>()
   const [turn, setTurn] = useState<'hero' | 'enemy'>('hero');
   const [battleMessage, setBattleMessage] = useState<string>('');
   const [gameOver, setGameOver] = useState<boolean>(false);
   const [winner, setWinner] = useState<'hero' | 'enemy' | null>(null);
+  const [battleEffect, setBattleEffect] = useState<{ target: 'hero' | 'enemy', type: 'attack' | 'healing', color: 'red' | 'purple' | 'yellow' } | null>(null);
 
   const initBattle = () => {
+    const selectedHero = location.state?.hero || load_characters.find(c => c.character_id === 'dark_oracle');
+    const selectedEnemy = location.state?.enemy || load_characters.find(c => c.character_id === 'balrock');
+
     setBattleLog([
         "Battle begins!",
         "Hero enters the arena...",
         "A wild enemy appears!"
       ]);
-      setHero(JSON.parse(JSON.stringify(load_characters.find(c => c.character_id === 'dark_oracle'))));
-      setEnemy(JSON.parse(JSON.stringify(load_characters.find(c => c.character_id === 'balrock'))));
+      setHero({ ...JSON.parse(JSON.stringify(selectedHero)), instance: 'hero' });
+      setEnemy({ ...JSON.parse(JSON.stringify(selectedEnemy)), instance: 'enemy' });
       setTurn('hero');
       setBattleMessage('');
       setGameOver(false);
@@ -30,7 +41,8 @@ const CharacterBattle: React.FC = () => {
 
   useEffect(() => {
     initBattle();
-  }, []);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [location.state]);
 
   const heroAbilities = hero?.abilities?.map(ability => {
       return character_abilities.character_abilities.find(a => a.ability_id === ability.ability_id);
@@ -40,7 +52,7 @@ const CharacterBattle: React.FC = () => {
     return character_abilities.character_abilities.find(a => a.ability_id === ability.ability_id);
 });
 
-  const handleAbilityUse = (attacker: Character, defender: Character, ability: any) => {
+  const handleAbilityUse = (attacker: BattleCharacter, defender: BattleCharacter, ability: any) => {
     if (gameOver || !attacker || !defender) return;
 
     if (ability.ability_type === 'physical_attack' && (attacker.stamina || 0) < (ability.stamina_cost || 0)) {
@@ -61,11 +73,14 @@ const CharacterBattle: React.FC = () => {
     setBattleMessage('');
 
     if (ability.ability_type === 'physical_attack' || ability.ability_type === 'magic_attack') {
+        setBattleEffect({ target: defender.instance, type: 'attack', color: ability.ability_type === 'physical_attack' ? 'red' : 'purple' });
+        setTimeout(() => setBattleEffect(null), 500);
+
         const { damage, newDefenderHealth } = basic_attack(attacker, defender, ability);
         const newAttackerStamina = Math.max(0, (attacker.stamina || 0) - (ability.stamina_cost || 0));
         const newAttackerMana = Math.max(0, (attacker.mana || 0) - (ability.mana_cost || 0));
 
-        if (attacker.character_id === hero?.character_id) {
+        if (attacker.instance === 'hero') {
             setEnemy(prev => (prev ? { ...prev, health: newDefenderHealth } : undefined));
             setHero(prev => (prev ? { ...prev, stamina: newAttackerStamina, mana: newAttackerMana } : undefined));
             setBattleLog(prev => [...prev, `Hero attacks ${defender.character_name} with ${ability.ability_name} for ${damage.toFixed(2)} damage!`]);
@@ -87,11 +102,14 @@ const CharacterBattle: React.FC = () => {
             }
         }
     } else if (ability.ability_type === 'healing') {
+        setBattleEffect({ target: attacker.instance, type: 'healing', color: 'yellow' });
+        setTimeout(() => setBattleEffect(null), 500);
+
         const { newHealerHealth } = basic_heal(attacker);
         const newAttackerStamina = Math.max(0, (attacker.stamina || 0) - (ability.stamina_cost || 0));
         const newAttackerMana = Math.max(0, (attacker.mana || 0) - (ability.mana_cost || 0));
 
-        if (attacker.character_id === hero?.character_id) {
+        if (attacker.instance === 'hero') {
             setHero(prev => (prev ? { ...prev, health: newHealerHealth, stamina: newAttackerStamina, mana: newAttackerMana } : undefined));
             setBattleLog(prev => [...prev, `Hero uses ${ability.ability_name} and recovers health!`]);
             setTurn('enemy');
@@ -103,14 +121,15 @@ const CharacterBattle: React.FC = () => {
     }
   };
 
-  const CharacterCard: React.FC<{ character?: Character; isHero?: boolean }> = ({ character, isHero = false }) => {
+  const CharacterCard: React.FC<{ character?: BattleCharacter; isHero?: boolean }> = ({ character, isHero = false }) => {
     if (!character) {
         return null;
     }
     return (
-    <div className={`bg-white rounded-lg shadow-lg p-6 ${isHero ? 'border-2 border-blue-500' : 'border-2 border-red-500'}`}>
+    <div className={`bg-white rounded-lg shadow-lg p-6 relative ${isHero ? 'border-2 border-blue-500' : 'border-2 border-red-500'}`}>
+        {battleEffect && battleEffect.target === character.instance && <BattleEffect color={battleEffect.color} />}
       <div className="text-center mb-4">
-        <img src={`/assets/characters/profile/${character.character_id}.jpg`} alt={character.character_name} className="w-32 h-32 rounded-full mx-auto mb-4" />
+        <img src={`/assets/characters/chibi/${character.character_id}.png`} alt={character.character_name} className="w-32 h-32 rounded-full mx-auto mb-4" />
         <h2 className="text-xl font-bold text-gray-800">{character.character_name}</h2>
         <p className="text-sm text-gray-600">Level {character.character_level}</p>
       </div>
@@ -167,7 +186,7 @@ const CharacterBattle: React.FC = () => {
     </div>
   )};
 
-  const ActionPanel: React.FC<{character: Character, abilities: any[], onAbilityUse: (ability: any) => void, disabled: boolean}> = ({character, abilities, onAbilityUse, disabled}) => (
+  const ActionPanel: React.FC<{character: BattleCharacter, abilities: any[], onAbilityUse: (ability: any) => void, disabled: boolean}> = ({character, abilities, onAbilityUse, disabled}) => (
     <div className="bg-white rounded-lg shadow-lg p-4">
         <h3 className="text-lg font-semibold text-gray-800 mb-3">Abilities</h3>
         <div className="grid grid-cols-2 gap-2">
