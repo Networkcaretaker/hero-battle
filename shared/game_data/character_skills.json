@@ -198,25 +198,6 @@
         "minimum_level": 1,
         "class_ids": ["mage"]
       }
-    },
-	{
-      "skill_id": "skill",
-      "skill_name": "SKILL",
-      "skill_description": "Decsription",
-      "skill_category": "Category",
-      "bonuses": [
-        {
-          "stat": "bonus_stat",
-          "value": 1
-        }
-      ],
-      "requirements": {
-        "skill_id": "skill_id",
-        "minimum_level": 1,
-		"race_ids": ["race_id"],
-        "class_ids": ["class_id"],
-		"role_ids": ["role_id"]
-      }
     }
   ]
 }

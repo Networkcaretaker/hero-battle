@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-
+import { Character } from '@shared/types/character'
+import { load_characters } from '@shared/game_data/character_data'
+/*
 interface Character {
     Name: string;
     Race: string;
     Class: string;
     Role: string;
 }
+*/
 
 const CharacterView: React.FC = () => {
     const navigate = useNavigate();
@@ -22,22 +25,24 @@ const CharacterView: React.FC = () => {
         try {
             // In a real app, you'd load from your characters.json file
             // For now, using sample data based on your structure
-            const sampleCharacters: Character[] = [
+            /*const sampleCharacters: Character[] = [
                 {
-                    Name: "Character 1",
-                    Race: "Human",
-                    Class: "Warrior",
-                    Role: "Brawler"
+					character_id: "balrock",
+                    character_name: "Balrock",
+                    character_race_id: CharacterRaces.ORC,
+                    character_class_id: CharacterClasses.BRAWLER,
+                    character_role_id: CharacterRoles.TANK
                 },
                 {
-                    Name: "Character 2", 
-                    Race: "Elf",
-                    Class: "Mage",
-                    Role: "Commander"
+                    character_id: "oracle",
+                    character_name: "Dark Oracle",
+                    character_race_id: CharacterRaces.HUMAN,
+                    character_class_id: CharacterClasses.MAGE,
+                    character_role_id: CharacterRoles.SUPPORT
                 }
-            ];
+            ];*/
             
-            setCharacters(sampleCharacters);
+            setCharacters(load_characters);
             setLoading(false);
         } catch (err) {
 			console.log(err)
@@ -57,7 +62,7 @@ const CharacterView: React.FC = () => {
 
     const handleViewDetails = (character: Character) => {
         // For now, just show an alert - implement detailed view later
-        alert(`Viewing details for ${character.Name} - implement detailed character view`);
+        alert(`Viewing details for ${character.character_name} - implement detailed character view`);
     };
 
     if (loading) {
@@ -99,33 +104,50 @@ const CharacterView: React.FC = () => {
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
                     {characters.map((character, index) => (
                         <div key={index} className="bg-black/30 backdrop-blur-sm rounded-xl p-6 border border-gray-700">
-                            {/* Character Portrait Placeholder */}
-                            <div className="w-24 h-24 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full mx-auto mb-4 flex items-center justify-center">
-                                <span className="text-white font-bold text-2xl">
-                                    {character.Name.charAt(0)}
-                                </span>
-                            </div>
+
+							{/* Character Image */}
+							<div>
+								<img src={`/assets/characters/profile/${character.character_id}.jpg`}></img>
+							</div>
 
                             {/* Character Info */}
                             <div className="text-center">
-                                <h3 className="text-xl font-bold text-white mb-2">{character.Name}</h3>
-                                
-                                <div className="space-y-2 text-sm">
-                                    <div className="flex justify-between">
-                                        <span className="text-gray-400">Race:</span>
-                                        <span className="text-white font-medium">{character.Race}</span>
-                                    </div>
-                                    
-                                    <div className="flex justify-between">
-                                        <span className="text-gray-400">Class:</span>
-                                        <span className="text-white font-medium">{character.Class}</span>
-                                    </div>
-                                    
-                                    <div className="flex justify-between">
-                                        <span className="text-gray-400">Role:</span>
-                                        <span className="text-white font-medium">{character.Role}</span>
-                                    </div>
+								<div className="my-4">
+									<h3 className="text-xl font-bold text-white">{character.character_name}</h3>
+									<span className="text-white text-sm font-light italic">{character.character_race_id} {character.character_role_id} {character.character_class_id}</span>
                                 </div>
+
+								{/* Character Primary Stats*/}
+								<div className="border p-2">
+									<div className="columns-4 my-2">
+										<div className="flex justify-center">
+											<span className="text-gray-400 text-xs">Strength</span>
+										</div>
+										<div className="flex justify-center">
+											<span className="text-gray-400 text-xs">Intelligence</span>
+										</div>
+										<div className="flex justify-center">
+											<span className="text-gray-400 text-xs">Agility</span>
+										</div>
+										<div className="flex justify-center">
+											<span className="text-gray-400 text-xs">Magic</span>
+										</div>
+									</div>
+									<div className="columns-4 my-2">
+										<div className="flex justify-center">
+											<span className="text-white text-xs">{character.strength}</span>
+										</div>
+										<div className="flex justify-center">
+											<span className="text-white text-xs">{character.intelligence}</span>
+										</div>
+										<div className="flex justify-center">
+											<span className="text-white text-xs">{character.agility}</span>
+										</div>
+										<div className="flex justify-center">
+											<span className="text-white text-xs">{character.magic}</span>
+										</div>
+									</div>
+								</div>
 
                                 {/* Character Actions */}
                                 <div className="mt-4 space-y-2">

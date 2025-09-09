@@ -1,8 +1,8 @@
 {
   "races": [
     {
-      "race_id": "Human",
-      "race_name": "Human",
+      "race_id": "human",
+      "race_name": "HUMAN",
       "race_description": "Versatile and adaptable beings with balanced abilities. Humans excel at learning diverse skills and adapting to any situation, making them valuable allies in any party composition.",
       "strength": 1,
       "intelligence": 2,
@@ -15,13 +15,12 @@
 		"leadership"
 	  ],
       "abilities": [
-		"uppercut",
-        "human_cunning"
+		"uppercut"
       ]
     },
     {
-      "race_id": "Dwarf",
-      "race_name": "Dwarf",
+      "race_id": "dwarf",
+      "race_name": "DWARF",
       "race_description": "Hardy mountain folk known for their incredible toughness and craftsmanship. Dwarves are natural defenders with unmatched endurance and resistance to magical effects.",
       "strength": 2,
       "intelligence": 1,
@@ -38,8 +37,8 @@
       ]
     },
     {
-      "race_id": "Elf",
-      "race_name": "Elf",
+      "race_id": "elf",
+      "race_name": "ELF",
       "race_description": "Graceful and mystical beings with deep connections to nature and magic. Elves possess keen senses and natural agility, excelling at ranged combat and magical arts.",
       "strength": 1,
       "intelligence": 1,
@@ -56,8 +55,8 @@
       ]
     },
     {
-      "race_id": "Orc",
-      "race_name": "Orc",
+      "race_id": "orc",
+      "race_name": "ORC",
       "race_description": "Powerful and aggressive warriors driven by primal instincts. Orcs possess immense physical strength and natural ferocity, making them formidable opponents in direct combat.",
       "strength": 3,
       "intelligence": 0,

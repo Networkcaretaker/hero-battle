@@ -1,8 +1,8 @@
 {
   "classes": [
     {
-      "class_id": "Mage",
-      "class_name": "Mage",
+      "class_id": "mage",
+      "class_name": "MAGE",
       "class_description": "Masters of arcane arts who wield devastating magical powers from a distance. Mages excel at area damage and magical utility but are fragile in direct combat.",
       "strength": 0,
       "intelligence": 2,
@@ -13,8 +13,8 @@
       "abilities": []
     },
     {
-      "class_id": "Brawler",
-      "class_name": "Brawler",
+      "class_id": "brawler",
+      "class_name": "BRAWLER",
       "class_description": "Fierce melee combatants who rely on raw physical power and aggression. Brawlers excel at close-quarters combat and can take significant punishment.",
       "strength": 2,
       "intelligence": 1,
@@ -25,8 +25,8 @@
       "abilities": []
     },
     {
-      "class_id": "Rouge",
-      "class_name": "Rogue",
+      "class_id": "rouge",
+      "class_name": "ROUGE",
       "class_description": "Cunning specialists in stealth, precision strikes, and battlefield mobility. Rogues excel at hit-and-run tactics and exploiting enemy weaknesses.",
       "strength": 0,
       "intelligence": 1,
@@ -37,8 +37,8 @@
       "abilities": []
     },
     {
-      "class_id": "Healer",
-      "class_name": "Healer",
+      "class_id": "healer",
+      "class_name": "HEALER",
       "class_description": "Divine practitioners who mend wounds and support allies with protective magic. Healers are essential for sustaining a party through prolonged battles.",
       "strength": 0,
       "intelligence": 3,
@@ -49,8 +49,8 @@
       "abilities": []
     },
     {
-      "class_id": "Commander",
-      "class_name": "Commander",
+      "class_id": "commander",
+      "class_name": "COMMANDER",
       "class_description": "Tactical leaders who excel at coordinating allies and controlling the battlefield. Commanders provide strategic advantages and inspire their team to greater heights.",
       "strength": 1,
       "intelligence": 3,

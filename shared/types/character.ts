@@ -4,154 +4,154 @@ export interface Character {
 	// Character Details
 	character_id: string; // Unique character identifier
 	character_name: string; // Display name of the character
-	character_description: string; // Flavor text/background description
+	character_description?: string; // Flavor text/background description
     character_race_id: CharacterRaces; // References shared CharacterRace definition
 	character_class_id: CharacterClasses; // References shared CharacterClass definition  
 	character_role_id: CharacterRoles; // References shared CharacterRole definition
 
 	// Experience
-    character_xp: number; // Total XP accumulated
-	character_level: number; // Current level (1-100)
-	character_rank: number; // Current rank for stat multipliers
-	current_level_xp: number; // XP earned towards next level (e.g., 480 out of 500)
-	xp_to_next_level: number; // XP still needed for next level (e.g., 20)
+    character_xp?: number; // Total XP accumulated
+	character_level?: number; // Current level (1-100)
+	character_rank?: number; // Current rank for stat multipliers
+	current_level_xp?: number; // XP earned towards next level (e.g., 480 out of 500) // Will Probably remove this
+	xp_to_next_level?: number; // XP still needed for next level (e.g., 20) // Will Probably remove this
 
 	/* Primary Stats */
     // Primary Stats: Base Stats (stored - from race + class)
-	base_strength: number; // character_race.strength + character_class.strength
-	base_intelligence: number; // character_race.intelligence + character_class.intelligence
-	base_agility: number; // character_race.agility + character_class.agility
-	base_magic: number; // character_race.magic + character_class.magic
+	base_strength?: number; // character_race.strength + character_class.strength
+	base_intelligence?: number; // character_race.intelligence + character_class.intelligence
+	base_agility?: number; // character_race.agility + character_class.agility
+	base_magic?: number; // character_race.magic + character_class.magic
 
 	// Primary Stats: Stat Points (stored - earned from leveling)
-	strength_points: number; // Player-allocated points (3 per level earned)
-	intelligence_points: number; // Player-allocated points (3 per level earned)
-	agility_points: number; // Player-allocated points (3 per level earned)
-	magic_points: number; // Player-allocated points (3 per level earned)
+	strength_points?: number; // Player-allocated points (3 per level earned)
+	intelligence_points?: number; // Player-allocated points (3 per level earned)
+	agility_points?: number; // Player-allocated points (3 per level earned)
+	magic_points?: number; // Player-allocated points (3 per level earned)
 
 	// Primary Stats: Bonus Stats (stored - from equipment/traits, calculated outside battle)
-	bonus_strength: number; // From weapons, armour, items, traits
-	bonus_intelligence: number; // From weapons, armour, items, traits
-	bonus_agility: number; // From weapons, armour, items, traits
-	bonus_magic: number; // From weapons, armour, items, traits
+	bonus_strength?: number; // From weapons, armour, items, traits
+	bonus_intelligence?: number; // From weapons, armour, items, traits
+	bonus_agility?: number; // From weapons, armour, items, traits
+	bonus_magic?: number; // From weapons, armour, items, traits
 
 	// Primary Stats: Character Stats (stored - calculated at level up, or when a bonus is added)
-	strength: number; // (((base_strength * character_level) + strength_points + character_level) * character_rank) + bonus_strength
-	intelligence: number; // (((base_intelligence * character_level) + intelligence_points + character_level) * character_rank) + bonus_intelligence
-	agility: number; // (((base_agility * character_level) + agility_points + character_level) * character_rank) + bonus_agility
-	magic: number; // (((base_magic * character_level) + magic_points + character_level) * character_rank) + bonus_magic
+	strength?: number; // (((base_strength * character_level) + strength_points + character_level) * character_rank) + bonus_strength
+	intelligence?: number; // (((base_intelligence * character_level) + intelligence_points + character_level) * character_rank) + bonus_intelligence
+	agility?: number; // (((base_agility * character_level) + agility_points + character_level) * character_rank) + bonus_agility
+	magic?: number; // (((base_magic * character_level) + magic_points + character_level) * character_rank) + bonus_magic
 
 	// Primary Stats: Battle Stats (calculated during battle - can change with status effects)
-	battle_strength: number; // strength + temporary_effects
-	battle_intelligence: number; // intelligence + temporary_effects
-	battle_agility: number; // agility + temporary_effects
-	battle_magic: number; // magic + temporary_effects
+	battle_strength?: number; // strength + temporary_effects
+	battle_intelligence?: number; // intelligence + temporary_effects
+	battle_agility?: number; // agility + temporary_effects
+	battle_magic?: number; // magic + temporary_effects
 
 	// Primary Stats: Character Power (stored - used for game calculations outside battle)
-	total_power: number; // strength + intelligence + agility + magic
+	total_power?: number; // strength + intelligence + agility + magic
 
 	/* Energy Stats */
 	// Energy Stats: Base Energy (calculated from primary stats)
-	base_health: number; // (strength + intelligence) * level * rank
-	base_stamina: number; // agility * level * rank
-	base_mana: number; // magic * level * rank
+	base_health?: number; // (strength + intelligence) * level * rank
+	base_stamina?: number; // agility * level * rank
+	base_mana?: number; // magic * level * rank
 
 	// Energy Stats: Bonus (from external sources)
-	bonus_health: number; // From weapons, armour, items, traits
-	bonus_stamina: number; // From weapons, armour, items, traits
-	bonus_mana: number; // From weapons, armour, items, traits
+	bonus_health?: number; // From weapons, armour, items, traits
+	bonus_stamina?: number; // From weapons, armour, items, traits
+	bonus_mana?: number; // From weapons, armour, items, traits
 
 	// Energy Stats: Total Energy (base + bonus - the character's actual energy pools)
-	health: number; // base_health + bonus_health
-	stamina: number; // base_stamina + bonus_stamina
-	mana: number; // base_mana + bonus_mana
+	health?: number; // base_health + bonus_health
+	stamina?: number; // base_stamina + bonus_stamina
+	mana?: number; // base_mana + bonus_mana
 
 	// Energy Stats: Battle Energy (battle state - reset to health/stamina/mana at battle start)
-	battle_health: number; // Current HP during battle (can decrease from damage)
-	battle_stamina: number; // Current stamina during battle (consumed by abilities)
-	battle_mana: number; // Current mana during battle (consumed by spells)
+	battle_health?: number; // Current HP during battle (can decrease from damage)
+	battle_stamina?: number; // Current stamina during battle (consumed by abilities)
+	battle_mana?: number; // Current mana during battle (consumed by spells)
 
 	// Energy Stats: Max Energy (battle limits - can be modified by abilities/status effects)
-	max_health: number; // Maximum HP during battle (health + temporary_effects)
-	max_stamina: number; // Maximum stamina during battle (stamina + temporary_effects)
-	max_mana: number; // Maximum mana during battle (mana + temporary_effects)
+	max_health?: number; // Maximum HP during battle (health + temporary_effects)
+	max_stamina?: number; // Maximum stamina during battle (stamina + temporary_effects)
+	max_mana?: number; // Maximum mana during battle (mana + temporary_effects)
 
 	// Energy Stats: Bonus Energy Recovery
-	bonus_health_recovery: number; // From weapons, armour, items, traits, skills
-	bonus_stamina_recovery: number; // From weapons, armour, items, traits, skills
-	bonus_mana_recovery: number; // From weapons, armour, items, traits, skills
+	bonus_health_recovery?: number; // From weapons, armour, items, traits, skills
+	bonus_stamina_recovery?: number; // From weapons, armour, items, traits, skills
+	bonus_mana_recovery?: number; // From weapons, armour, items, traits, skills
 
 	// Energy Stats: (fixed rates calculated outside battle, used when resting during battle)
-	health_recovery: number; // recovery when resting: (health * 0.1) + bonus_health_recovery
-	stamina_recovery: number; //  recovery when resting: (stamina * 0.1) + bonus_stamina_recovery
-	mana_recovery: number; //  recovery when resting: (mana * 0.1) + bonus_mana_recovery
+	health_recovery?: number; // recovery when resting: (health * 0.1) + bonus_health_recovery
+	stamina_recovery?: number; //  recovery when resting: (stamina * 0.1) + bonus_stamina_recovery
+	mana_recovery?: number; //  recovery when resting: (mana * 0.1) + bonus_mana_recovery
 
 	/* Battle Power Stats */
 	// Battle Power Stats: Base
-	base_physical_attack: number; // character_race.physical_attack
-	base_magic_attack: number; // character_race.magic_attack
-	base_physical_defence: number;// character_race.physical_defence
-	base_magic_defence: number;// character_race.magic_defence
+	base_physical_attack?: number; // character_race.physical_attack
+	base_magic_attack?: number; // character_race.magic_attack
+	base_physical_defence?: number;// character_race.physical_defence
+	base_magic_defence?: number;// character_race.magic_defence
 
 	// Battle Power Stats: Base
-	bonus_physical_attack: number; // From weapons, armour, items, traits, skills
-	bonus_magic_attack: number; // From weapons, armour, items, traits, skills
-	bonus_physical_defence: number; // From weapons, armour, items, traits, skills
-	bonus_magic_defence: number; // From weapons, armour, items, traits, skills
+	bonus_physical_attack?: number; // From weapons, armour, items, traits, skills
+	bonus_magic_attack?: number; // From weapons, armour, items, traits, skills
+	bonus_physical_defence?: number; // From weapons, armour, items, traits, skills
+	bonus_magic_defence?: number; // From weapons, armour, items, traits, skills
 
 	// Battle Power Stats: Calculated
-	physical_attack: number; // ((strength + (agility * level) + (base_physical_attack * level)) * rank) + bonus_physical_attack
-	magic_attack: number; // ((intelligence + (magic * level) + (base_magic_attack * level)) * rank) + bonus_magic_attack
-	physical_defence: number; // ((agility + (strength * level) + (base_physical_defence * level)) * rank) + bonus_physical_defence
-	magic_defence: number; // ((magic + (intelligence * level) + (base_magic_defence * level)) * rank) + bonus_magic_defence
+	physical_attack?: number; // ((strength + (agility * level) + (base_physical_attack * level)) * rank) + bonus_physical_attack
+	magic_attack?: number; // ((intelligence + (magic * level) + (base_magic_attack * level)) * rank) + bonus_magic_attack
+	physical_defence?: number; // ((agility + (strength * level) + (base_physical_defence * level)) * rank) + bonus_physical_defence
+	magic_defence?: number; // ((magic + (intelligence * level) + (base_magic_defence * level)) * rank) + bonus_magic_defence
 	
 	// Battle Power Stats: Defence Penitration and resistance
-	armour_penitration: number; // From weapons, armour, items, traits, skills
-	magic_penitration: number; // From weapons, armour, items, traits, skills
-	magic_resistance: number; // From weapons, armour, items, traits, skills
+	armour_penitration?: number; // From weapons, armour, items, traits, skills
+	magic_penitration?: number; // From weapons, armour, items, traits, skills
+	magic_resistance?: number; // From weapons, armour, items, traits, skills
 
 	// Attributes
-	skills: CharacterSkill[]; // References skills with current skill level 
-	traits: CharacterTrait[]; // References traits with current trait power and current cooldown and is_active
-	abilities: CharacterAbility[]; // References abilities with current cooldown
-	ultimate_ability_id: CharacterAbility; // References Ultimate ability with current cooldown
+	skills?: CharacterSkill[]; // References skills with current skill level 
+	traits?: CharacterTrait[]; // References traits with current trait power and current cooldown and is_active
+	abilities?: CharacterAbility[]; // References abilities with current cooldown
+	ultimate_ability_id?: CharacterAbility; // References Ultimate ability with current cooldown
 
 	// Equipment
-	weapon_id: Weapon; // References shared Weapon definition
-	armour_id: Armour; // References shared Armour definition
+	weapon_id?: Weapon; // References shared Weapon definition
+	armour_id?: Armour; // References shared Armour definition
 
 	// Battle Attributes
-	position: [number, number]; // [x, y] coordinates on the battle grid
-	status_effects: CharacterStatusEffect[]; // References active status effects with current duration
-	action_points: number; // start with 2 at beguining of turn, can be modified with status effects
-	ultimate_energy: number; // 1-100 percent based, energy is gained during battles and used for Ultimate ability
+	position?: [number, number]; // [x, y] coordinates on the battle grid
+	status_effects?: CharacterStatusEffect[]; // References active status effects with current duration
+	action_points?: number; // start with 2 at beguining of turn, can be modified with status effects
+	ultimate_energy?: number; // 1-100 percent based, energy is gained during battles and used for Ultimate ability
 
 	// Character Resistance and Weakness
-	resistance: Array<{ stat: string; value: number; }>; // Percentage of resistance to physical damage, magic damage, fire magic, ice magic, bows, etc. Less damage
-	weakness: Array<{ stat: string; value: number; }>; // Percentage of weakness to physical damage, magic damage, fire magic, ice magic, bows, etc. More damage.
+	resistance?: Array<{ stat: string; value: number; }>; // Percentage of resistance to physical damage, magic damage, fire magic, ice magic, bows, etc. Less damage
+	weakness?: Array<{ stat: string; value: number; }>; // Percentage of weakness to physical damage, magic damage, fire magic, ice magic, bows, etc. More damage.
 	
 	// Character Flags
-	flags: CharacterFlags;
+	flags?: CharacterFlags;
 }
 
 // Character Race
 export interface CharacterRace {
 	readonly race_id: CharacterRaces; // Unique ID referencing CharacterRaces
-	readonly race_name: string; // race_id.toUpperCase()
-    readonly race_description: string; // A description of the race
-    readonly strength: number; // Base strength and stat bonus per level
-    readonly intelligence: number; // Base intelligence and stat bonus per level
-    readonly agility: number; // Base agility and stat bonus per level
-    readonly magic: number; // Base magic and stat bonus per level
+	readonly race_name?: string; // race_id.toUpperCase()
+    readonly race_description?: string; // A description of the race
+    readonly strength?: number; // Base strength and stat bonus per level
+    readonly intelligence?: number; // Base intelligence and stat bonus per level
+    readonly agility?: number; // Base agility and stat bonus per level
+    readonly magic?: number; // Base magic and stat bonus per level
     readonly skills?: string[]; // IDs referencing skill definitions
     readonly traits?: string[]; // IDs referencing trait definitions
     readonly abilities?: string[]; // IDs referencing ability definitions
 }
 export enum CharacterRaces {
-	HUMAN = "human",
-	DWARF = "dwarf",
-	ELF = "elf", 
-	ORC = "orc"
+	HUMAN = "Human",
+	DWARF = "Dwarf",
+	ELF = "Elf", 
+	ORC = "Orc"
 }
 
 // Character Class
