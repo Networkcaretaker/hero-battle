@@ -61,8 +61,7 @@ const CharacterView: React.FC = () => {
     };
 
     const handleViewDetails = (character: Character) => {
-        // For now, just show an alert - implement detailed view later
-        alert(`Viewing details for ${character.character_name} - implement detailed character view`);
+        navigate(`/character/${character.character_id}`);
     };
 
     if (loading) {

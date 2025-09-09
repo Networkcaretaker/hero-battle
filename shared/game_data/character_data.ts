@@ -51,24 +51,24 @@ export const load_characters: Character[] = [
     bonus_mana: 0,
 
     health: 56,
-    stamina: 3,
-    mana: 1,
+    stamina: 5,
+    mana: 3,
 
     battle_health: 56,
-    battle_stamina: 3,
-    battle_mana: 1,
+    battle_stamina: 5,
+    battle_mana: 3,
 
     max_health: 56,
-    max_stamina: 3,
-    max_mana: 1,
+    max_stamina: 5,
+    max_mana: 3,
 
     bonus_health_recovery: 0,
     bonus_stamina_recovery: 0,
     bonus_mana_recovery: 0,
 
-    health_recovery: 5.6,
-    stamina_recovery: 0.3,
-    mana_recovery: 0.1,
+    health_recovery: 5,
+    stamina_recovery: 3,
+    mana_recovery: 1,
 
     base_physical_attack: 0,
     base_magic_attack: 0,
@@ -110,6 +110,10 @@ export const load_characters: Character[] = [
     abilities: [
       {
         ability_id: "orc_bash",
+        current_cooldown: 0
+      },
+      {
+        ability_id: "self_heal",
         current_cooldown: 0
       }
     ],
@@ -196,9 +200,9 @@ export const load_characters: Character[] = [
     bonus_stamina_recovery: 0,
     bonus_mana_recovery: 5,
 
-    health_recovery: 1.8,
-    stamina_recovery: 0.1,
-    mana_recovery: 8.4,
+    health_recovery: 8,
+    stamina_recovery: 1,
+    mana_recovery: 4,
 
     base_physical_attack: 0,
     base_magic_attack: 0,
@@ -240,6 +244,10 @@ export const load_characters: Character[] = [
     abilities: [
       {
         ability_id: "uppercut",
+        current_cooldown: 0
+      },
+      {
+        ability_id: "magic_blast",
         current_cooldown: 0
       }
     ],

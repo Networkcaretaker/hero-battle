@@ -12,7 +12,7 @@
       "aoe": false,
       "damage_target": "enemy",
       "mana_cost": 0,
-      "stamina_cost": 10,
+      "stamina_cost": 1,
       "cooldown": 0,
       "status_duration": 0
     },
@@ -28,7 +28,7 @@
       "aoe": false,
       "damage_target": "enemy",
       "mana_cost": 0,
-      "stamina_cost": 10,
+      "stamina_cost": 1,
       "cooldown": 0,
       "status_duration": 0
     },
@@ -44,7 +44,7 @@
       "aoe": false,
       "damage_target": "enemy",
       "mana_cost": 0,
-      "stamina_cost": 10,
+      "stamina_cost": 1,
       "cooldown": 0,
       "status_duration": 0
     },
@@ -60,7 +60,23 @@
       "aoe": false,
       "damage_target": "enemy",
       "mana_cost": 0,
-      "stamina_cost": 10,
+      "stamina_cost": 1,
+      "cooldown": 0,
+      "status_duration": 0
+    },
+    {
+      "ability_id": "magic_blast",
+      "ability_name": "MAGIC BLAST",
+      "ability_description": "A quick blast of magical energy.",
+      "ability_type": "magic_attack",
+	  "min_level": 1,
+      "damage": 1.0,
+	  "damage_type": "flat",
+      "range": 1,
+      "aoe": false,
+      "damage_target": "enemy",
+      "mana_cost": 1,
+      "stamina_cost": 0,
       "cooldown": 0,
       "status_duration": 0
     },
@@ -75,8 +91,8 @@
       "range": 0,
       "aoe": false,
       "healing_target": "self",
-      "mana_cost": 15,
-      "stamina_cost": 5,
+      "mana_cost": 2,
+      "stamina_cost": 0,
       "cooldown": 2,
       "status_duration": 0
     },

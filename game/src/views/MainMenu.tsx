@@ -65,6 +65,17 @@ const MainMenu: React.FC = () => {
                     </button>
 
                     <button
+                        onClick={() => navigate('/character-battle')}
+                        className={`group w-full max-w-md mx-auto block bg-gradient-to-r from-green-600 to-teal-600 hover:from-green-500 hover:to-teal-500 text-white font-bold py-6 px-8 rounded-xl shadow-2xl transform hover:scale-105 transition-all duration-300 hover:shadow-green-500/50`}
+                    >
+                        <div className="flex items-center justify-center space-x-4">
+                            <Swords className="w-8 h-8 group-hover:animate-pulse" />
+                            <span className="text-xl md:text-2xl">CHARACTER BATTLE</span>
+                        </div>
+                        <p className="text-sm opacity-90 mt-2">Watch a simulated battle between two characters</p>
+                    </button>
+
+                    <button
                         onClick={handleViewCharacters}
                         className={`group w-full max-w-md mx-auto block bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white font-bold py-6 px-8 rounded-xl shadow-2xl transform hover:scale-105 transition-all duration-300 hover:shadow-blue-500/50 ${
                             selectedOption === 'characters' ? 'ring-4 ring-blue-400' : ''
