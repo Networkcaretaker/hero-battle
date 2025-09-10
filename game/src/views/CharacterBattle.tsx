@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { Sword, Heart } from 'lucide-react';
+import { Sword, Heart, Zap, Fan } from 'lucide-react';
 import { Character as CharacterType } from '@shared/types/character';
 import { load_characters } from '@shared/game_data/character_data';
 import { basic_attack, basic_heal } from '../services/battle_functions';
@@ -27,9 +27,10 @@ const CharacterBattle: React.FC = () => {
     const selectedEnemy = location.state?.enemy || load_characters.find(c => c.character_id === 'balrock');
 
     setBattleLog([
-        "Battle begins!",
-        "Hero enters the arena...",
-        "A wild enemy appears!"
+        "Welcome",
+		`${selectedHero?.character_name} enters the arena...`,
+        `A wild enemy named ${selectedEnemy?.character_name} suddenly appears!`,
+		`A Battle begins!`
       ]);
       setHero({ ...JSON.parse(JSON.stringify(selectedHero)), instance: 'hero' });
       setEnemy({ ...JSON.parse(JSON.stringify(selectedEnemy)), instance: 'enemy' });
@@ -83,7 +84,7 @@ const CharacterBattle: React.FC = () => {
         if (attacker.instance === 'hero') {
             setEnemy(prev => (prev ? { ...prev, health: newDefenderHealth } : undefined));
             setHero(prev => (prev ? { ...prev, stamina: newAttackerStamina, mana: newAttackerMana } : undefined));
-            setBattleLog(prev => [...prev, `Hero attacks ${defender.character_name} with ${ability.ability_name} for ${damage.toFixed(2)} damage!`]);
+            setBattleLog(prev => [...prev, `${attacker.character_name} attacks ${defender.character_name} with ${ability.ability_name} for ${damage.toFixed(2)} damage!`]);
             if (newDefenderHealth === 0) {
                 setGameOver(true);
                 setWinner('hero');
@@ -93,7 +94,7 @@ const CharacterBattle: React.FC = () => {
         } else {
             setHero(prev => (prev ? { ...prev, health: newDefenderHealth } : undefined));
             setEnemy(prev => (prev ? { ...prev, stamina: newAttackerStamina, mana: newAttackerMana } : undefined));
-            setBattleLog(prev => [...prev, `Enemy attacks ${defender.character_name} with ${ability.ability_name} for ${damage.toFixed(2)} damage!`]);
+            setBattleLog(prev => [...prev, `${attacker.character_name} attacks ${defender.character_name} with ${ability.ability_name} for ${damage.toFixed(2)} damage!`]);
             if (newDefenderHealth === 0) {
                 setGameOver(true);
                 setWinner('enemy');
@@ -111,11 +112,11 @@ const CharacterBattle: React.FC = () => {
 
         if (attacker.instance === 'hero') {
             setHero(prev => (prev ? { ...prev, health: newHealerHealth, stamina: newAttackerStamina, mana: newAttackerMana } : undefined));
-            setBattleLog(prev => [...prev, `Hero uses ${ability.ability_name} and recovers health!`]);
+            setBattleLog(prev => [...prev, `${attacker.character_name} uses ${ability.ability_name} and recovers ${attacker.health_recovery} health!`]);
             setTurn('enemy');
         } else {
             setEnemy(prev => (prev ? { ...prev, health: newHealerHealth, stamina: newAttackerStamina, mana: newAttackerMana } : undefined));
-            setBattleLog(prev => [...prev, `Enemy uses ${ability.ability_name} and recovers health!`]);
+            setBattleLog(prev => [...prev, `${attacker.character_name} uses ${ability.ability_name} and recovers ${attacker.health_recovery} health!`]);
             setTurn('hero');
         }
     }
@@ -131,14 +132,14 @@ const CharacterBattle: React.FC = () => {
       <div className="text-center mb-4">
         <img src={`/assets/characters/chibi/${character.character_id}.png`} alt={character.character_name} className="w-32 h-32 rounded-full mx-auto mb-4" />
         <h2 className="text-xl font-bold text-gray-800">{character.character_name}</h2>
-        <p className="text-sm text-gray-600">Level {character.character_level}</p>
+        <p className="text-sm text-gray-600">Level {character.character_level} - Power: {character.total_power}</p>
       </div>
       
       {/* Health Bar */}
       <div className="mb-3">
         <div className="flex justify-between text-sm text-gray-700 mb-1">
           <span>Health</span>
-          <span>{character.health?.toFixed(2)}/{character.max_health}</span>
+          <span>{character.health?.toFixed(0)}/{character.max_health}</span>
         </div>
         <div className="w-full bg-gray-200 rounded-full h-3">
           <div 
@@ -178,10 +179,10 @@ const CharacterBattle: React.FC = () => {
 
       {/* Battle Stats */}
         <div className="grid grid-cols-2 gap-2 text-sm text-gray-700">
-            <div>PA: {character.physical_attack}</div>
-            <div>PD: {character.physical_defence}</div>
-            <div>MA: {character.magic_attack}</div>
-            <div>MD: {character.magic_defence}</div>
+            <div className="flex justify-between items-center">Physical Attack: <span className="font-bold bg-green-500 rounded-full py-1 px-2 text-white">{character.physical_attack}</span></div>
+            <div className="flex justify-between items-center">Magic Attack: <span className="font-bold bg-blue-500 rounded-full py-1 px-2 text-white">{character.magic_attack}</span></div>
+            <div className="flex justify-between items-center">Physical Defence: <span className="font-bold bg-green-500 rounded-full py-1 px-2 text-white">{character.physical_defence}</span></div>
+            <div className="flex justify-between items-center">Magic Defence: <span className="font-bold bg-blue-500 rounded-full py-1 px-2 text-white">{character.magic_defence}</span></div>
         </div>
     </div>
   )};
