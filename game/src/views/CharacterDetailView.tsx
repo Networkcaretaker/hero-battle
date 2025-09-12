@@ -36,7 +36,15 @@ const CharacterDetailView: React.FC = () => {
                         <img 
                             src={`/assets/characters/profile/${character.character_id}.jpg`} 
                             alt={character.character_name} 
-                            className="rounded-lg w-full"
+                            className="rounded-lg w-full mb-4"
+                        />
+						<video width="100%" height="300" autoPlay muted>
+							<source src={`/assets/characters/video/${character.character_id}.mp4`} type="video/mp4" />
+						</video>
+						<img 
+                            src={`/assets/characters/chibi/${character.character_id}.png`} 
+                            alt={character.character_name} 
+                            className="w-full"
                         />
                     </div>
                     <div className="md:w-2/3">
@@ -46,17 +54,26 @@ const CharacterDetailView: React.FC = () => {
                         </p>
                         <p className="text-gray-300 mb-6">{character.character_description}</p>
                         
-                        <div className="grid grid-cols-2 gap-4 text-lg">
+                        <div className="grid grid-cols-3 gap-4 text-lg border-b pb-4">
                             <div><strong>Level:</strong> {character.character_level}</div>
+                            <div><strong>Rank:</strong> {character.character_rank}</div>
                             <div><strong>XP:</strong> {character.character_xp}</div>
                             <div><strong>Health:</strong> {character.health}</div>
                             <div><strong>Stamina:</strong> {character.stamina}</div>
                             <div><strong>Mana:</strong> {character.mana}</div>
-                            <div><strong>Strength:</strong> {character.strength}</div>
+                        </div>
+						<div className="grid grid-cols-2 gap-4 text-lg py-4 border-b pb-4">
+							<div><strong>Strength:</strong> {character.strength}</div>
                             <div><strong>Intelligence:</strong> {character.intelligence}</div>
                             <div><strong>Agility:</strong> {character.agility}</div>
                             <div><strong>Magic:</strong> {character.magic}</div>
-                        </div>
+						</div>
+						<div className="grid grid-cols-2 gap-4 text-lg py-4 border-b pb-4">
+							<div><strong>Physical Attack:</strong> {character.physical_attack}</div>
+                            <div><strong>Physical Defence:</strong> {character.physical_defence}</div>
+                            <div><strong>Magic Attack:</strong> {character.magic_attack}</div>
+                            <div><strong>Magic Defence:</strong> {character.magic_defence}</div>
+						</div>
                     </div>
                 </div>
             </div>
